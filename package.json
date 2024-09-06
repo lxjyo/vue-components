@@ -6,7 +6,7 @@
     "lint": "eslint . --ext .vue,.js,.ts --fix"
   },
   "lint-staged": {
-    "**/*.{vue,ts,js}": "pnpm dlx lint"
+    "**/*.{vue,ts,js}": "eslint --fix"
   },
   "config": {
     "commitizen": {
