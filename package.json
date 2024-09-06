@@ -2,11 +2,13 @@
   "name": "vue-components",
   "version": "0.0.0",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "lint": "eslint . --ext .vue,.js,.ts --fix"
   },
   "lint-staged": {
-    "**/*.{vue,ts,js}": "eslint --fix"
+    "**/*.{vue,ts,js}": [
+      "eslint --fix"
+    ]
   },
   "config": {
     "commitizen": {
