@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import ModalForm from '@vue/ant-components/ModalForm.vue'
+import ModalForm from '@vue/ant-components/ModalForm'
 const openModal = ref(false)
 const formData = reactive({
   name: ''

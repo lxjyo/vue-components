@@ -1,7 +1,7 @@
-import ModalForm from './ModalForm.vue'
-import SearchForm, { SearchFormItem } from './SearchForm.vue'
+import ModalForm from './ModalForm'
+import SearchForm, { SearchFormItem } from './SearchForm'
 import { createPlugin } from './helpers'
-const components = [ModalForm, SearchForm]
+const components = [ModalForm, SearchForm, SearchFormItem]
 
 export const Plugin = createPlugin(components)
 

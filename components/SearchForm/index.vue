@@ -185,7 +185,7 @@ type SearchFormItemAttrs = {
 /**
  * 搜索表单项
  */
-export const SearchFormItem = defineComponent({
+const SearchFormItem = defineComponent({
   name: 'SearchFormItem',
   props: {
     // 所占列数
