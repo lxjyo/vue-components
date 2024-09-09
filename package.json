@@ -20,9 +20,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "@vue/ant-components": "workspace:^",
-    "ant-design-vue": "^4.2.3",
-    "vue": "^3.4.29"
+    "@vue/ant-components": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -35,6 +33,7 @@
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
+    "ant-design-vue": "^4.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
@@ -48,6 +47,11 @@
     "rollup-plugin-resolve": "0.0.1-predev.1",
     "rollup-plugin-typescript2": "^0.36.0",
     "rollup-plugin-vue": "^6.0.0",
-    "typescript": "~5.4.0"
+    "typescript": "~5.4.0",
+    "vue": "^3.2.0"
+  },
+  "peerDependencies": {
+    "ant-design-vue": "^4.0.0",
+    "vue": "^3.2.0"
   }
 }
