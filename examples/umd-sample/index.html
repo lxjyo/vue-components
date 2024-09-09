@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ant-design-vue@4.2.0/dist/reset.min.css"
+    />
+    <link rel="stylesheet" href="../../dist/umd/index.css" />
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.0/dist/vue.global.min.js"></script>
+    <script src="https://unpkg.com/dayjs/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/customParseFormat.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/weekday.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/localeData.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/weekOfYear.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/weekYear.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/advancedFormat.js"></script>
+    <script src="https://unpkg.com/dayjs/plugin/quarterOfYear.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ant-design-vue@4.2.0/dist/antd.min.js"></script>
+    <script src="../../dist/umd/index.js"></script>
+    <div id="app">
+      <modal-form title="弹框表单" v-model:open="visible" :model="formData" @ok="onOk">
+        <a-form-item label="表单" name="name" required>
+          <a-input v-model:value="formData.name"></a-input>
+        </a-form-item>
+      </modal-form>
+      <search-form :model="searchForm">
+        <search-form-item label="表单1" name="name">
+          <a-input v-model:value="searchForm.name"></a-input>
+        </search-form-item>
+        <search-form-item label="表单2" name="value">
+          <a-input v-model:value="searchForm.value"></a-input>
+        </search-form-item>
+        <search-form-item label="表单3" name="value3">
+          <a-input v-model:value="searchForm.value3"></a-input>
+        </search-form-item>
+        <search-form-item label="表单4" name="value4" name="long" :span="2">
+          <a-input v-model:value="searchForm.value4"></a-input>
+        </search-form-item>
+        <template #extra>
+          <a-button type="primary" @click="visible = true">打开弹框表单</a-button>
+        </template>
+      </search-form>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            visible: false,
+            formData: {
+              name: '23'
+            },
+            searchForm: {
+              name: '',
+              value: '',
+              value3: '',
+              value4: ''
+            }
+          }
+        },
+        methods: {
+          onOk({ resolve, reject }) {
+            setTimeout(() => {
+              resolve('操作成功')
+            }, 1000)
+          }
+        }
+      })
+      app.use(antd)
+      app.use(VueAntdComps)
+      app.mount('#app')
+    </script>
+  </body>
+</html>

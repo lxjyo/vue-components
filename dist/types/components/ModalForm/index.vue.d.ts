@@ -1,4 +1,5 @@
 import type { PropType } from 'vue';
+import type { IModalFormOkContext } from './types';
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     /**
      * 是否显示 v-model:open
@@ -33,9 +34,7 @@ declare const _default: import("vue").DefineComponent<import("vue").ExtractPropT
             xs: {
                 type: PropType<string | number | import("ant-design-vue/es/grid").ColSize>;
                 default: string | number | import("ant-design-vue/es/grid").ColSize;
-            }; /**
-             * 取消按钮事件
-             */
+            };
             sm: {
                 type: PropType<string | number | import("ant-design-vue/es/grid").ColSize>;
                 default: string | number | import("ant-design-vue/es/grid").ColSize;
@@ -113,10 +112,7 @@ declare const _default: import("vue").DefineComponent<import("vue").ExtractPropT
      * @param param0 modal 确认按钮回调参数
      * @returns
      */
-    ok: ({ resolve, reject }: {
-        resolve: Function;
-        reject: Function;
-    }) => boolean;
+    ok: ({ resolve, reject }: IModalFormOkContext) => boolean;
     /**
      * 取消按钮事件
      */
@@ -155,9 +151,7 @@ declare const _default: import("vue").DefineComponent<import("vue").ExtractPropT
             xs: {
                 type: PropType<string | number | import("ant-design-vue/es/grid").ColSize>;
                 default: string | number | import("ant-design-vue/es/grid").ColSize;
-            }; /**
-             * 取消按钮事件
-             */
+            };
             sm: {
                 type: PropType<string | number | import("ant-design-vue/es/grid").ColSize>;
                 default: string | number | import("ant-design-vue/es/grid").ColSize;
@@ -229,10 +223,7 @@ declare const _default: import("vue").DefineComponent<import("vue").ExtractPropT
 }>> & Readonly<{
     onCancel?: ((...args: any[]) => any) | undefined;
     "onUpdate:open"?: ((value: boolean) => any) | undefined;
-    onOk?: ((args_0: {
-        resolve: Function;
-        reject: Function;
-    }) => any) | undefined;
+    onOk?: ((args_0: IModalFormOkContext) => any) | undefined;
 }>, {
     labelCol: (Partial<import("vue").ExtractPropTypes<{
         span: (StringConstructor | NumberConstructor)[];
@@ -243,9 +234,7 @@ declare const _default: import("vue").DefineComponent<import("vue").ExtractPropT
         xs: {
             type: PropType<string | number | import("ant-design-vue/es/grid").ColSize>;
             default: string | number | import("ant-design-vue/es/grid").ColSize;
-        }; /**
-         * 取消按钮事件
-         */
+        };
         sm: {
             type: PropType<string | number | import("ant-design-vue/es/grid").ColSize>;
             default: string | number | import("ant-design-vue/es/grid").ColSize;

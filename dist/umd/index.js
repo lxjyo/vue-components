@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('ant-design-vue'), require('vue')) :
   typeof define === 'function' && define.amd ? define(['exports', 'ant-design-vue', 'vue'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.VueAntdComps = {}, global.Antd, global.Vue));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.VueAntdComps = {}, global.antd, global.Vue));
 })(this, (function (exports, antDesignVue, vue) { 'use strict';
 
   var script = vue.defineComponent({
@@ -119,15 +119,13 @@
   /**
    * 创建一个Vue插件，用于注册一组组件。
    * @param components 组件数组，每个组件应该是一个具有 `name` 属性的 Vue 组件。
-   * @returns Vue插件对象，包含一个`install`方法。
+   * @returns 一个`install`方法。
    */
   function createPlugin(components) {
-    return {
-      install: function install(app) {
-        components.forEach(function (component) {
-          app.component(component.name, component);
-        });
-      }
+    return function (app) {
+      components.forEach(function (component) {
+        app.component(component.name, component);
+      });
     };
   }
 
@@ -1063,14 +1061,7 @@
   function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? Object(arguments[i]) : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$3(target, key, source[key]); }); } return target; }
 
   function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-  function warn(valid, message) {
-    // Support uglify
-    if (process.env.NODE_ENV !== 'production' && !valid && console !== undefined) {
-      console.error("Warning: ".concat(message));
-    }
-  }
   function warning(valid, message) {
-    warn(valid, "[@ant-design/icons-vue] ".concat(message));
   }
 
 
@@ -1199,7 +1190,7 @@
       };
     }
 
-    warning(isIconDefinition(icon), "icon should be icon definiton, but got ".concat(icon));
+    warning(isIconDefinition(icon));
 
     if (!isIconDefinition(icon)) {
       return null;
@@ -1559,11 +1550,11 @@
   var SearchFormItem = withInstall(__default__.Item);
 
   var components = [ModalForm, SearchFormWithInstall, SearchFormItem];
-  var Plugin = createPlugin(components);
+  var install = createPlugin(components);
 
   exports.ModalForm = ModalForm;
-  exports.Plugin = Plugin;
   exports.SearchForm = SearchFormWithInstall;
   exports.SearchFormItem = SearchFormItem;
+  exports.install = install;
 
 }));

@@ -5,6 +5,8 @@ import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
 import babel from '@rollup/plugin-babel'
 import clear from 'rollup-plugin-clear'
+// 替换
+import replace from '@rollup/plugin-replace'
 
 const input = './components/index.ts'
 
@@ -20,7 +22,7 @@ const plugins = [
     tsconfigOverride: {
       compilerOptions: {
         declaration: true,
-        declarationDir: './dist'
+        declarationDir: './dist/types'
       }
     }
   }),
@@ -29,6 +31,11 @@ const plugins = [
     extensions: ['.ts', '.js'],
     exclude: ['node_modules/**'],
     babelHelpers: 'bundled'
+  }),
+  replace({
+    // 需要将字符串做一下替换，不然会报错：process is not defined
+    preventAssignment: true,
+    'process.env.NODE_ENV': JSON.stringify('production')
   }),
   postcss({
     minimize: true,
@@ -48,12 +55,12 @@ export default defineConfig([
       {
         dir: './dist/esm',
         format: 'esm',
-        preserveModules: true
+        preserveModules: true,
       },
       {
         dir: './dist/cjs',
         format: 'cjs',
-        preserveModules: true
+        preserveModules: true,
       }
     ],
     external: ['vue', 'ant-design-vue', '@ant-design/icons-vue']
@@ -68,7 +75,7 @@ export default defineConfig([
       exports: 'named',
       globals: {
         vue: 'Vue',
-        'ant-design-vue': 'Antd',
+        'ant-design-vue': 'antd'
       }
     },
     external: ['vue', 'ant-design-vue']

@@ -3,6 +3,7 @@ import type { FormInstance, FormProps } from 'ant-design-vue'
 import { Modal, Form, notification } from 'ant-design-vue'
 import { defineComponent, ref, h } from 'vue'
 import type { PropType } from 'vue'
+import type { IModalFormOkContext } from './types'
 export default defineComponent({
   name: 'ModalForm',
   props: {
@@ -48,7 +49,7 @@ export default defineComponent({
      * @param param0 modal 确认按钮回调参数
      * @returns
      */
-    ok: ({ resolve, reject }: { resolve: Function; reject: Function }) =>
+    ok: ({ resolve, reject }: IModalFormOkContext) =>
       typeof resolve === 'function' && typeof reject === 'function',
     /**
      * 取消按钮事件

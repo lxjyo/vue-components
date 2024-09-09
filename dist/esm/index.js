@@ -3,6 +3,6 @@ import SearchFormWithInstall, { SearchFormItem } from './SearchForm/index.js';
 import { createPlugin } from './helpers.js';
 
 var components = [ModalForm, SearchFormWithInstall, SearchFormItem];
-var Plugin = createPlugin(components);
+var install = createPlugin(components);
 
-export { ModalForm, Plugin, SearchFormWithInstall as SearchForm, SearchFormItem };
+export { ModalForm, SearchFormWithInstall as SearchForm, SearchFormItem, install };
