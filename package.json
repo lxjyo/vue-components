@@ -1,0 +1,52 @@
+{
+  "name": "vue-components",
+  "version": "0.0.0",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "eslint . --ext .vue,.js,.ts --fix",
+    "build": "rollup --config rollup.config.mjs",
+    "preview": "pnpm -C storybook storybook",
+    "dev": "pnpm -C examples/esm-sample dev"
+  },
+  "lint-staged": {
+    "**/*.{vue,ts,js}": [
+      "eslint --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@vue/ant-components": "workspace:^",
+    "ant-design-vue": "^4.2.3",
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rushstack/eslint-patch": "^1.10.4",
+    "@tsconfig/node20": "^20.1.4",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "husky": "^9.1.5",
+    "less": "^4.2.0",
+    "prettier": "^3.2.5",
+    "rollup": "^4.21.2",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-resolve": "0.0.1-predev.1",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "typescript": "~5.4.0"
+  }
+}
