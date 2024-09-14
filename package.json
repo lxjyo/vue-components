@@ -1,9 +1,6 @@
 {
   "name": "antd-vue-components",
-  "version": "0.0.2",
-  "files": [
-    "dist"
-  ],
+  "version": "1.0.0",
   "main": "./dist/cjs/index.js",
   "exports": {
     ".": {
@@ -12,6 +9,18 @@
     }
   },
   "types": "./dist/types/components",
+  "keywords": [
+    "ant-design-vue",
+    "vue3"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "lxjyo",
+    "url": "https://github.com/lxjyo"
+  },
+  "description": "基于ant-design-vue组件的二次封装组件",
   "scripts": {
     "prepare": "husky",
     "lint": "eslint . --ext .vue,.js,.ts --fix",
@@ -71,6 +80,10 @@
   "peerDependencies": {
     "ant-design-vue": "^4.0.0",
     "vue": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lxjyo/vue-components.git"
   },
   "engines": {
     "node": ">=18"
