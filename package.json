@@ -1,7 +1,9 @@
 {
   "name": "antd-vue-components",
   "version": "0.0.0",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/cjs/index.js",
   "exports": {
     ".": {
@@ -17,7 +19,10 @@
     "preview": "pnpm -C storybook storybook",
     "dev": "pnpm -C examples/esm-sample dev",
     "test": "pnpm -C components test",
-    "release": "standard-version"
+    "release": "cross-env HUSKY_SKIP_HOOKS=1 standard-version",
+    "release-minor": "cross-env HUSKY_SKIP_HOOKS=1 standard-version -r minor",
+    "release-major": "cross-env HUSKY_SKIP_HOOKS=1 standard-version -r major",
+    "release-patch": "cross-env HUSKY_SKIP_HOOKS=1 standard-version -r patch"
   },
   "lint-staged": {
     "**/*.{vue,ts,js}": [
@@ -46,6 +51,7 @@
     "@vue/tsconfig": "^0.5.1",
     "ant-design-vue": "^4.0.0",
     "commitizen": "^4.3.0",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
