@@ -4,7 +4,7 @@ import { VueWrapper, flushPromises, mount } from '@vue/test-utils'
 import { Form, FormItem, Input, Modal } from 'ant-design-vue'
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { h } from 'vue'
-import type { IModalFormOkContext } from 'components/ModalForm/types'
+import type { IModalFormOkContext } from '../ModalForm/types'
 
 type ModalFormInstance = InstanceType<typeof ModalForm>
 describe('ModalForm', () => {
