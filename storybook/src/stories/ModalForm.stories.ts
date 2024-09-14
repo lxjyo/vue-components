@@ -1,5 +1,5 @@
 import type { Args, Meta, StoryObj } from '@storybook/vue3'
-import { ModalForm } from '@vue/ant-components'
+import { ModalForm } from 'antd-vue-components'
 import { reactive, ref, watch } from 'vue'
 import { action } from '@storybook/addon-actions'
 

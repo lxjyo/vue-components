@@ -1,5 +1,5 @@
 import type { Args, Meta, StoryObj } from '@storybook/vue3'
-import { SearchForm, SearchFormItem } from '@vue/ant-components'
+import { SearchForm, SearchFormItem } from 'antd-vue-components'
 import { reactive } from 'vue'
 
 const meta = {

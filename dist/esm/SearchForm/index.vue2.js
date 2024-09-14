@@ -143,7 +143,7 @@ const SearchFormItem = defineComponent({
         const { width, labelWidth, gutter } = inject(SearchFormContext);
         return () => {
             const { flex, style = {}, ...otherAttrs } = attrs;
-            const itemWidth = (width.value + COL_GAP) * (props.span || 1);
+            const itemWidth = (width.value) * (props.span || 1); // width.value + COL_GAP
             return h(Col, {
                 flex: flex ? flex : `0 0 ${itemWidth}px`,
                 style: {

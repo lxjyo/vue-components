@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('ant-design-vue'), require('vue')) :
   typeof define === 'function' && define.amd ? define(['exports', 'ant-design-vue', 'vue'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.VueAntdComps = {}, global.antd, global.Vue));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.AntdComponents = {}, global.antd, global.Vue));
 })(this, (function (exports, antDesignVue, vue) { 'use strict';
 
   var script = vue.defineComponent({
@@ -1509,7 +1509,7 @@
           const { width, labelWidth, gutter } = vue.inject(SearchFormContext);
           return () => {
               const { flex, style = {}, ...otherAttrs } = attrs;
-              const itemWidth = (width.value + COL_GAP) * (props.span || 1);
+              const itemWidth = (width.value) * (props.span || 1); // width.value + COL_GAP
               return vue.h(antDesignVue.Col, {
                   flex: flex ? flex : `0 0 ${itemWidth}px`,
                   style: {

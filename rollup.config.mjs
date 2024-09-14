@@ -56,11 +56,6 @@ export default defineConfig([
         dir: './dist/esm',
         format: 'esm',
         preserveModules: true,
-      },
-      {
-        dir: './dist/cjs',
-        format: 'cjs',
-        preserveModules: true,
       }
     ],
     external: ['vue', 'ant-design-vue', '@ant-design/icons-vue']
@@ -71,7 +66,7 @@ export default defineConfig([
     output: {
       dir: './dist/umd',
       format: 'umd',
-      name: 'VueAntdComps',
+      name: 'AntdComponents',
       exports: 'named',
       globals: {
         vue: 'Vue',

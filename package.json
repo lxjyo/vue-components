@@ -6,7 +6,8 @@
     "lint": "eslint . --ext .vue,.js,.ts --fix",
     "build": "rollup --config rollup.config.mjs",
     "preview": "pnpm -C storybook storybook",
-    "dev": "pnpm -C examples/esm-sample dev"
+    "dev": "pnpm -C examples/esm-sample dev",
+    "test": "pnpm -C components test"
   },
   "lint-staged": {
     "**/*.{vue,ts,js}": [
@@ -20,7 +21,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "@vue/ant-components": "workspace:^"
+    "antd-vue-components": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ModalForm, { type IModalFormOkContext } from '@vue/ant-components/ModalForm'
-import SearchForm, { SearchFormItem } from '@vue/ant-components/SearchForm'
+import ModalForm, { type IModalFormOkContext } from 'antd-vue-components/ModalForm'
+import SearchForm, { SearchFormItem } from 'antd-vue-components/SearchForm'
 import { reactive } from 'vue'
 import { ref } from 'vue'
 
