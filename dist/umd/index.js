@@ -1509,7 +1509,7 @@
           const { width, labelWidth, gutter } = vue.inject(SearchFormContext);
           return () => {
               const { flex, style = {}, ...otherAttrs } = attrs;
-              const itemWidth = (width.value) * (props.span || 1); // width.value + COL_GAP
+              const itemWidth = width.value * (props.span || 1); // width.value + COL_GAP
               return vue.h(antDesignVue.Col, {
                   flex: flex ? flex : `0 0 ${itemWidth}px`,
                   style: {

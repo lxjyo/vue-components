@@ -1,6 +1,10 @@
-import { defineComponent, toRefs, ref, provide, watch, h, inject, useCssVars } from 'vue';
-import { Button, Space, Form, Row, Col, FormItem } from 'ant-design-vue';
-import { SearchOutlined } from '@ant-design/icons-vue';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var vue = require('vue');
+var antDesignVue = require('ant-design-vue');
+var iconsVue = require('@ant-design/icons-vue');
 
 const COL_GAP = 16;
 /**
@@ -26,7 +30,7 @@ const validateChildrenType = (children) => {
     return flag;
 };
 const SearchFormContext = Symbol();
-const SearchForm = defineComponent({
+const SearchForm = vue.defineComponent({
     name: 'SearchForm',
     inheritAttrs: false,
     props: {
@@ -60,10 +64,10 @@ const SearchForm = defineComponent({
     },
     emits: ['submit', 'reset'],
     setup(props, { attrs, slots, emit, expose }) {
-        const propsRefs = toRefs(props);
-        const formRef = ref();
-        const containerRef = ref();
-        provide(SearchFormContext, {
+        const propsRefs = vue.toRefs(props);
+        const formRef = vue.ref();
+        const containerRef = vue.ref();
+        vue.provide(SearchFormContext, {
             width: propsRefs.width,
             labelWidth: propsRefs.labelWidth,
             gutter: propsRefs.gutter
@@ -72,14 +76,14 @@ const SearchForm = defineComponent({
         expose({
             getFormInstance: () => formRef.value
         });
-        watch(formRef, val => props.formRef && props.formRef(val));
+        vue.watch(formRef, val => props.formRef && props.formRef(val));
         return () => {
             const children = (slots.default ? slots.default() : []);
             validateChildrenType(children);
             const renderSlots = slots.btns
                 ? slots.btns
                 : () => [
-                    h(Button, {
+                    vue.h(antDesignVue.Button, {
                         type: 'primary',
                         loading: props.loading,
                         onClick: async () => {
@@ -92,10 +96,10 @@ const SearchForm = defineComponent({
                             }
                         }
                     }, {
-                        icon: () => h(SearchOutlined),
+                        icon: () => vue.h(iconsVue.SearchOutlined),
                         default: () => '查询'
                     }),
-                    h(Button, {
+                    vue.h(antDesignVue.Button, {
                         onClick: () => {
                             formRef.value?.resetFields();
                             emit('reset');
@@ -103,9 +107,9 @@ const SearchForm = defineComponent({
                     }, () => '重置')
                 ];
             if (props.showBtns) {
-                const inlineBtns = h(SearchFormItem, {
+                const inlineBtns = vue.h(SearchFormItem, {
                     flex: 1
-                }, () => h(Space, {
+                }, () => vue.h(antDesignVue.Space, {
                     style: {
                         width: '100%',
                         align: 'center'
@@ -113,14 +117,14 @@ const SearchForm = defineComponent({
                 }, () => [renderSlots(), slots.extra ? slots.extra() : null]));
                 children.push(inlineBtns);
             }
-            return h('div', {
+            return vue.h('div', {
                 ref: containerRef,
                 class: 'search-form-container'
-            }, h(Form, {
+            }, vue.h(antDesignVue.Form, {
                 ...attrs,
                 ref: formRef,
                 layout: 'horizontal'
-            }, () => h(Row, {
+            }, () => vue.h(antDesignVue.Row, {
                 gutter: [COL_GAP, 0],
                 wrap: true
             }, () => children)));
@@ -130,7 +134,7 @@ const SearchForm = defineComponent({
 /**
  * 搜索表单项
  */
-const SearchFormItem = defineComponent({
+const SearchFormItem = vue.defineComponent({
     name: 'SearchFormItem',
     props: {
         // 所占列数
@@ -140,17 +144,17 @@ const SearchFormItem = defineComponent({
         }
     },
     setup(props, { attrs, slots }) {
-        const { width, labelWidth, gutter } = inject(SearchFormContext);
+        const { width, labelWidth, gutter } = vue.inject(SearchFormContext);
         return () => {
             const { flex, style = {}, ...otherAttrs } = attrs;
             const itemWidth = width.value * (props.span || 1); // width.value + COL_GAP
-            return h(Col, {
+            return vue.h(antDesignVue.Col, {
                 flex: flex ? flex : `0 0 ${itemWidth}px`,
                 style: {
                     overflow: 'hidden',
                     ...style
                 }
-            }, () => h(FormItem, {
+            }, () => vue.h(antDesignVue.FormItem, {
                 ...otherAttrs,
                 class: ['search-form-item', gutter.value < 24 ? 'no-message' : ''],
                 labelCol: {
@@ -168,7 +172,7 @@ const SearchFormItem = defineComponent({
 SearchForm.Item = SearchFormItem;
 const __default__ = SearchForm;
 const __injectCSSVars__ = () => {
-    useCssVars(_ctx => ({
+    vue.useCssVars(_ctx => ({
         "30461d6a-gutter\+\'px\'": (_ctx.gutter + 'px')
     }));
 };
@@ -177,4 +181,4 @@ __default__.setup = __setup__
     ? (props, ctx) => { __injectCSSVars__(); return __setup__(props, ctx); }
     : __injectCSSVars__;
 
-export { __default__ as default };
+exports.default = __default__;

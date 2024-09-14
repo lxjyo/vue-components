@@ -1,13 +1,23 @@
 {
-  "name": "vue-components",
+  "name": "antd-vue-components",
   "version": "0.0.0",
+  "files": ["dist"],
+  "main": "./dist/cjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "types": "./dist/types/components",
   "scripts": {
     "prepare": "husky",
     "lint": "eslint . --ext .vue,.js,.ts --fix",
     "build": "rollup --config rollup.config.mjs",
     "preview": "pnpm -C storybook storybook",
     "dev": "pnpm -C examples/esm-sample dev",
-    "test": "pnpm -C components test"
+    "test": "pnpm -C components test",
+    "release": "standard-version"
   },
   "lint-staged": {
     "**/*.{vue,ts,js}": [
@@ -48,11 +58,15 @@
     "rollup-plugin-resolve": "0.0.1-predev.1",
     "rollup-plugin-typescript2": "^0.36.0",
     "rollup-plugin-vue": "^6.0.0",
+    "standard-version": "^9.5.0",
     "typescript": "~5.4.0",
     "vue": "^3.2.0"
   },
   "peerDependencies": {
     "ant-design-vue": "^4.0.0",
     "vue": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

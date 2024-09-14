@@ -56,6 +56,12 @@ export default defineConfig([
         dir: './dist/esm',
         format: 'esm',
         preserveModules: true,
+      },
+      {
+        dir: './dist/cjs',
+        format: 'cjs',
+        preserveModules: true,
+        exports: 'named'
       }
     ],
     external: ['vue', 'ant-design-vue', '@ant-design/icons-vue']

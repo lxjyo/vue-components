@@ -5,6 +5,6 @@
   "include": ["./components/**/*.ts", "./components/**/*.vue"],
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "./types"
+    "declarationDir": "./types",
   }
 }
