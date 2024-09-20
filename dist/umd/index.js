@@ -4,6 +4,27 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.AntdComponents = {}, global.antd, global.Vue));
 })(this, (function (exports, antDesignVue, vue) { 'use strict';
 
+  var withInstall = function withInstall(component) {
+    component.install = function (app) {
+      var name = component.name;
+      // 注册组件
+      app.component(name, component);
+    };
+    return component;
+  };
+  /**
+   * 创建一个Vue插件，用于注册一组组件。
+   * @param components 组件数组，每个组件应该是一个具有 `name` 属性的 Vue 组件。
+   * @returns 一个`install`方法。
+   */
+  function createPlugin(components) {
+    return function (app) {
+      components.forEach(function (component) {
+        app.component(component.name, component);
+      });
+    };
+  }
+
   var script = vue.defineComponent({
       name: 'ModalForm',
       props: {
@@ -106,30 +127,9 @@
       }
   });
 
-  script.__file = "components/ModalForm/index.vue";
+  script.__file = "src/components/ModalForm/index.vue";
 
-  var withInstall = function withInstall(component) {
-    component.install = function (app) {
-      var name = component.name;
-      // 注册组件
-      app.component(name, component);
-    };
-    return component;
-  };
-  /**
-   * 创建一个Vue插件，用于注册一组组件。
-   * @param components 组件数组，每个组件应该是一个具有 `name` 属性的 Vue 组件。
-   * @returns 一个`install`方法。
-   */
-  function createPlugin(components) {
-    return function (app) {
-      components.forEach(function (component) {
-        app.component(component.name, component);
-      });
-    };
-  }
-
-  var ModalForm = withInstall(script);
+  var index = withInstall(script);
 
   /**
    * Take input from [0, n] and return it as [0, 1]
@@ -1535,7 +1535,7 @@
   const __default__ = SearchForm;
   const __injectCSSVars__ = () => {
       vue.useCssVars(_ctx => ({
-          "30461d6a-gutter\+\'px\'": (_ctx.gutter + 'px')
+          "3d395f82-gutter\+\'px\'": (_ctx.gutter + 'px')
       }));
   };
   const __setup__ = __default__.setup;
@@ -1543,16 +1543,22 @@
       ? (props, ctx) => { __injectCSSVars__(); return __setup__(props, ctx); }
       : __injectCSSVars__;
 
-  __default__.__scopeId = "data-v-30461d6a";
-  __default__.__file = "components/SearchForm/index.vue";
+  __default__.__scopeId = "data-v-3d395f82";
+  __default__.__file = "src/components/SearchForm/index.vue";
 
   var SearchFormWithInstall = withInstall(__default__);
   var SearchFormItem = withInstall(__default__.Item);
 
-  var components = [ModalForm, SearchFormWithInstall, SearchFormItem];
-  var install = createPlugin(components);
+  var components = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    ModalForm: index,
+    SearchForm: SearchFormWithInstall,
+    SearchFormItem: SearchFormItem
+  });
 
-  exports.ModalForm = ModalForm;
+  var install = createPlugin(Object.values(components));
+
+  exports.ModalForm = index;
   exports.SearchForm = SearchFormWithInstall;
   exports.SearchFormItem = SearchFormItem;
   exports.install = install;

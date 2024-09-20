@@ -8,7 +8,7 @@ import clear from 'rollup-plugin-clear'
 // 替换
 import replace from '@rollup/plugin-replace'
 
-const input = './components/index.ts'
+const input = './src/components/index.ts'
 
 const plugins = [
   nodeResolve(),
@@ -17,12 +17,13 @@ const plugins = [
   }),
   typescript({
     tsconfig: 'tsconfig.app.json',
-    include: ['components/**/*.ts', 'components/**/*.tsx'],
-    useTsconfigDeclarationDir: true,
+    // useTsconfigDeclarationDir: true,
     tsconfigOverride: {
+      include: ['shim-vue.d.ts', 'src/components/**/*.ts', 'src/components/**/*.vue'],
       compilerOptions: {
         declaration: true,
-        declarationDir: './dist/types'
+        rootDir: './src/components'
+        // declarationDir: './dist/types'
       }
     }
   }),
@@ -55,7 +56,7 @@ export default defineConfig([
       {
         dir: './dist/esm',
         format: 'esm',
-        preserveModules: true,
+        preserveModules: true
       },
       {
         dir: './dist/cjs',

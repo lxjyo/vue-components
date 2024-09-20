@@ -1,8 +1,8 @@
-import ModalForm from './ModalForm/index.js';
-import SearchFormWithInstall, { SearchFormItem } from './SearchForm/index.js';
 import { createPlugin } from './helpers.js';
+import * as components from './components.js';
+export { default as SearchForm, SearchFormItem } from './SearchForm/index.js';
+export { default as ModalForm } from './ModalForm/index.js';
 
-var components = [ModalForm, SearchFormWithInstall, SearchFormItem];
-var install = createPlugin(components);
+var install = createPlugin(Object.values(components));
 
-export { ModalForm, SearchFormWithInstall as SearchForm, SearchFormItem, install };
+export { install };
