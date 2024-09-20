@@ -25,7 +25,7 @@
     "name": "lxjyo",
     "url": "https://github.com/lxjyo"
   },
-  "description": "基于ant-design-vue组件的二次封装组件",
+  "description": "基于ant-design-vue的二次封装组件",
   "scripts": {
     "prepare": "husky",
     "dev": "vite",
