@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import ModalForm, { type IModalFormOkContext } from '../components/ModalForm'
 import SearchForm, { SearchFormItem } from '../components/SearchForm'
+import FormRender from '../components/FormRender/index.vue'
 import { reactive } from 'vue'
 import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 const visible = ref(false)
 const formData = reactive({
@@ -19,6 +21,29 @@ const onOk = ({ resolve }: IModalFormOkContext) => {
     resolve('操作成功')
   }, 1000)
 }
+
+const schema = shallowRef({
+  name: {
+    title: '字段名称',
+    widget: 'input', // 基础组件类型
+    required: true,
+    props: {
+      placeholder: '请输入字段名称'
+    } // 传递给基础组件的props
+  },
+  age: {
+    title: '年龄',
+    widget: 'inputnumber', // 基础组件类型
+    required: true,
+    props: {
+      placeholder: '请输入年龄'
+    }
+  }
+})
+const testForm = reactive({
+  name: '',
+  age: 12
+})
 </script>
 
 <template>
@@ -44,4 +69,5 @@ const onOk = ({ resolve }: IModalFormOkContext) => {
       <a-button type="primary" @click="visible = true">打开弹框表单</a-button>
     </template>
   </SearchForm>
+  <FormRender :schema="schema" :columns="2" :model="testForm"></FormRender>
 </template>
